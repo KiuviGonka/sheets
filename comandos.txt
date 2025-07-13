@@ -1,0 +1,20 @@
+set GH_TOKEN=  //necesario para setear el token de git despues del igual valo que trin
+npx electron-builder --win --publish always //publica ya todo incluso en el repositorio
+
+
+
+ npm start               //este es para probar localmente
+
+node build.js //esto es para no hacerlo desde cmd
+ 
+git init                                   # Inicializa git en tu proyecto local
+git remote add origin https://github.com/USUARIO/REPO.git
+git branch -M main                        # Renombra rama actual a 'main'
+git add .                                 # Agrega todos los archivos al stage
+git commit -m "Primer commit"             # Guarda los cambios en el repositorio local
+git push -u origin main                   # Sube a GitHub y vincula con la rama remota
+
+
+git add .                                 # Agrega todos los archivos modificados
+git commit -m "Descripción del cambio"    # Guarda los cambios localmente
+git push                                  # Sube los cambios a GitHub
