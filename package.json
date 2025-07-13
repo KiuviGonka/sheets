@@ -32,6 +32,14 @@
       "repo": "sheets",
       "releaseType": "release",
       "private": false
-    }
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer.js",
+      "vistas/**/*",
+      "css/**/*",
+      ".env"
+    ]
   }
 }

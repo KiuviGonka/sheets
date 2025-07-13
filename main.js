@@ -1,6 +1,4 @@
-require('dotenv').config();
 
-const { SecretKey_env, spreadsheetId_env, clientId_env, clientSecret_env } = process.env;
 const { shell, app, BrowserWindow, ipcMain } = require('electron');
 const http = require('http');
 let firstLoad = true;
@@ -10,9 +8,24 @@ const path = require('path');
 const url = require('url');
 const fs = require('fs');
 const algorithm = 'aes-256-cbc'; // Algoritmo de cifrado AES
+
+
+
+
+// Ruta segura compatible con desarrollo y producción
+const envPath = path.join(app.getAppPath(), '.env');
+
+if (fs.existsSync(envPath)) {//esto es para cargar todas las pass del env
+  require('dotenv').config({ path: envPath });
+} else {
+  console.warn('⚠️ No se encontró el archivo .env en:', envPath);
+}
+
+
+const { SecretKey_env, spreadsheetId_env, clientId_env, clientSecret_env } = process.env;
+
 const secretKey = Buffer.from(SecretKey_env, 'hex'); // Clave secreta (debe ser de 32 bytes para AES-256)
 const iv = crypto.randomBytes(16); // Vector de inicialización
-
 
 let oauth2Client = null;
 
